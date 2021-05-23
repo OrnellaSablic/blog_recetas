@@ -29,7 +29,7 @@
     <!-- <span class="site-heading-upper text-primary mb-3">A Free Bootstrap 4 Business Theme</span> -->
     <a class ="titulo-blog" href="index.php"><span class="site-heading-lower">Mi blog de Recetas</span></a>
   </h1>
-
+ 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
@@ -66,6 +66,10 @@
             <a class="nav-link text-uppercase text-expanded" href="contacto.php">Contacto</a>
           </li>
         </ul>
+ <span>
+    <a href="carrito.php"><i class="fas fa-shopping-basket" style="color: rgb(0 0 0);"></i></a>
+  </span>
+
       </div>
     </div>
   </nav>

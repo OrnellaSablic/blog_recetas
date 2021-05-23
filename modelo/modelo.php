@@ -7,16 +7,16 @@ ini_set('display_errors', 1);
 
 $conexion = mysqli_connect('localhost', 'root', '', 'blog_recetas');
 
-$query = "SELECT * FROM recetas";
+$query = "SELECT * FROM productos";
 
 $resultado = $conexion->query($query);
 
-$recetas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+$productos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 mysqli_close($conexion);
 
 
-return $recetas;
+return $productos;
 
 
 }
