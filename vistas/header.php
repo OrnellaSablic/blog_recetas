@@ -21,6 +21,10 @@
   <link href="css/business-casual.min.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/b022c73f3f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+  <script type="text/javascript" src="js/index.js" defer></script>
 </head>
 
 <body>
