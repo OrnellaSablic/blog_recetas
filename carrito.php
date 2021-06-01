@@ -36,7 +36,7 @@
                             <div class="product-info">
                               <p class="parrafo"><b>Nombre: </b><span id="product-description"><?php echo $producto['nombre'];?></span><br>
                               <b>Descripción: </b><?php echo $producto['descripcion'];?><br>
-                              <b>Precio:</b> $ <span id="unit-price">$<?php echo $producto['precio'];?></span></p>
+                              <b>Precio:</b> $ <span id="unit-price">$10</span></p>
                             </div>
                           </div>
                           <div class="col-md-3 product-detail">
