@@ -2,9 +2,11 @@
 
   require('vistas/header.php');
   require('modelo/modelo.php');
+  
 
   $receta = traer_por_id(1);
-
+   
+  enviar_comentario();
 
 ?>
   <main>
@@ -44,6 +46,42 @@
         </div>
       </div>
     </div>
+    <br>
+        <div class="container bg-faded rounded">
+              <h4 class="section-heading-upper">Comentarios</h4>
+              <div class="container">
+                <?php
+                  $conexion = mysqli_connect('localhost', 'root', '', 'blog_recetas');
+                  $resultado = mysqli_query($conexion, 'SELECT * FROM comentarios');
+                      while ($comentario = mysqli_fetch_object($resultado)) {
+                  ?>  
+                    <hr>
+                   <div class="container">
+                     <h5><?php echo ($comentario->nombre); ?> dijo:</h5>
+                     <p><?php echo ($comentario->contenido); ?></p><br>
+                     <p><strong>Fecha de publicación </strong><?php echo ($comentario->fecha); ?></p>
+                   </div>   
+
+                  <?php
+                  }
+                ?>
+              </div>
+          </div>
+
+        <form action="" method="post">
+          <div class="container titulo-contacto">
+            <div class="form-group ">
+              <div class="form-group ">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="" class="form-control" name ="nombre" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribi tu nombre" required>
+            </div>
+                <label for="exampleFormControlTextarea1">Dejá tu comentario</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name ="contenido" rows="3"  placeholder="Escribi tu comentario" required></textarea>
+              <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary" style="background-color: black" id="enviarMsj">Publicar</button>
+              </div>
+          </div>
+        </form>
   </section>
   </main>
 

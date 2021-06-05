@@ -1,36 +1,16 @@
 <?php
 
   require('vistas/header.php');
+  require('controlador/controlador.php');
 
-?>
 
-<?php
-  if(isset($_POST['enviar'])){
-    if(!empty($_POST['nombre']) && !empty($_POST['email']) && !empty($_POST['mensaje']) && !empty($_POST['asunto'])) {
-        $nombre = $_POST['nombre'];
-        $email = $_POST['email'];
-        $asunto = $_POST['asunto'];
-        $mensaje = $_POST['mensaje'];
-        $header = 'From: webmaster@example.com' . "\r\n" .
-            'Reply-To: webmaster@example.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        $mail = @mail($email, $asunto, $mensaje,$header);
-
-        if($mail){
-          echo "<p>¡Mail enviado exitosamente</p>";
-        }else{
-          echo "<p>¡Mail no enviado</p>";
-        }
-
-    }
-
-  }
+//enviarEmail();
 ?>
 
     <!-- Sección formulario de contacto -->
     <section>
           
-      <form method = "post" action ="contacto.php" style="background-color: orange">
+      <form action="" method= "post">
         <div class="container titulo-contacto ">
               <h5>Escribime si tenés alguna consulta o sugerencia</h5>
           </div>
@@ -51,8 +31,9 @@
           <textarea class="form-control" id="exampleFormControlTextarea1" name ="mensaje" rows="3"  required=""></textarea>
         </div>
         
-        <button type="submit" name="enviar" class="btn btn-primary" style="background-color: black">Enviar</button>
-      </form>
+        <button type="submit" name="enviar" class="btn btn-primary" style="background-color: black" id="enviarMsj">Enviar</button>
+         
+</form>
     </section>
 
 <?php
