@@ -1,3 +1,12 @@
+<?php
+
+  require('controlador/controlador.php');
+
+  $recetas = mostrar_recetas();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,30 +60,29 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="about.php">Sobre mí</a>
           </li>
-
+          
             <li class="nav-item dropdown">
+
               <a class="nav-link dropdown-toggle text-uppercase" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recetario</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="receta-berlinesas.php">Berlinesas</a>
-              <a class="dropdown-item" href="receta-pepas.php">Pepas de membrillo</a>
-              <a class="dropdown-item" href="receta-tortitas.php">Tortitas negras</a>
-              <a class="dropdown-item" href="receta-budindepan.php">Budin de pan</a>
-              <a class="dropdown-item" href="receta-oreo.php">Galletitas estilo Oreo</a>
-              <a class="dropdown-item" href="receta-merengadas.php">Galletitas Merengadas</a>
-
-            </li>
-            <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="tienda.php">Tienda</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="contacto.php">Contacto</a>
-          </li>
-        </ul>
- <span>
-    <a href="carrito.php"><i class="fas fa-shopping-basket" style="color: rgb(0 0 0);"></i></a>
-  </span>
-
-      </div>
+             
+                <div class="dropdown-menu">
+                    <?php foreach($recetas as $receta){?>
+                    <a class="dropdown-item" href="recetas.php?id=<?php echo $receta['id'];?>&nombre=<?php echo $receta['nombre'];?>&imagen=<?php echo $receta['imagen'];?>&descripcion=<?php echo $receta['descripcion'];?>"><?php echo $receta['nombre'];?></a>
+                  <?php }?>
+                </div>
+                </li>
+                 
+                  <li class="nav-item px-lg-4">
+                  <a class="nav-link text-uppercase text-expanded" href="tienda.php">Tienda</a>
+                </li>
+                <li class="nav-item px-lg-4">
+                  <a class="nav-link text-uppercase text-expanded" href="contacto.php">Contacto</a>
+                </li>
+              </ul>
+               <span>
+                  <a href="carrito.php"><i class="fas fa-shopping-basket" style="color: rgb(0 0 0);"></i></a>
+                </span>
+            </div>
     </div>
   </nav>
 </html>

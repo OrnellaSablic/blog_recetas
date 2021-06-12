@@ -1,9 +1,9 @@
 <?php
 
   require('vistas/header.php');
-  require('modelo/modelo.php');
+  
 
-  $productos = traer_todo();
+  $productos = traer_productos();
 
 ?>
 	  <div class="row mx-auto text-center">
@@ -21,7 +21,7 @@
                  	<img src="img/<?php echo $producto['imagen'];?>.png" />
                  	<h4 class="text-left"><?php echo $producto['nombre'];?></h4>
                  	<h5 class="text-left">$<?php echo $producto['precio'];?></h5>
-                 	<button class="btn btn-primary">Comprar</button>
+                 	<a class="btn btn-primary" href="/carrito.php/<?php echo $producto['id'];?>">Comprar</a>
              	</div>
              </div>
          

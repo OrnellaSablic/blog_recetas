@@ -1,7 +1,7 @@
 <?php
 
   require('vistas/header.php');
-  require('controlador/controlador.php');
+  require('enviar-mail.php');
 
 
 //enviarEmail();

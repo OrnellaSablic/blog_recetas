@@ -2,7 +2,7 @@
 
   require('vistas/header.php');
   require('modelo/modelo.php');
-  $productos = traer_todo($id);
+  //$productos = traer_todo($id);
 
   ?>
 
@@ -32,7 +32,7 @@
                             <img class="img-fluid mx-auto d-block image" src="img/harina.png">
                           </div>
                           <div class="col-md-4 product-detail">
-                            <h5>Product0</h5>
+                            <h5>Producto</h5>
                             <div class="product-info">
                               <p class="parrafo"><b>Nombre: </b><span id="product-description"><?php echo $producto['nombre'];?></span><br>
                               <b>Descripción: </b><?php echo $producto['descripcion'];?><br>

@@ -1,56 +1,83 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require('modelo/modelo.php');
 
-require 'vendor/phpmailer/PHPMailer/src/Exception.php';
-require 'vendor/phpmailer/PHPMailer/src/PHPMailer.php';
-require 'vendor/phpmailer/PHPMailer/src/SMTP.php';
+//PRODUCTOS
 
-enviarEmail();
+function traer_productos(){
 
-function enviarEmail(){
-	if(isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['asunto']) && isset($_POST['mensaje'])){
-		//enviar email
-		$nombre = $_POST['nombre'];
-		$email = $_POST['email'];
-		$asunto = $_POST['asunto'];
-		$mensaje = $_POST['mensaje'];
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-		$mail = new PHPMailer(true);
-		try {
-		    //Server settings
-		    //$mail->SMTPDebug = 2;                
-		    $mail->isSMTP(); 
-		    $mail->SMTPOptions = array(
-				'ssl' => array(
-			    'verify_peer' => false,
-			    'verify_peer_name' => false,
-			    'allow_self_signed' => true
-			));                                          
-		    $mail->Host       = 'smtp.gmail.com';                     
-		    $mail->SMTPAuth   = true;                                  
-		    $mail->Username   = 'ornellasablic@gmail.com';                     
-		    $mail->Password   = '14111992';                               
-		    $mail->SMTPSecure = 'tls';        
-		    $mail->Port       = 587;                                 
+$conexion = mysqli_connect('localhost', 'root', '', 'blog_recetas');
 
-		    //Recipients
-		    $mail->setFrom($_POST['email'],$_POST['nombre']);
-		    $mail->addAddress('ornellasablic@gmail.com');    
-		    $mail->addReplyTo($_POST['email'], $_POST['nombre']);
-		    
-		    //Content
-		    $mail->isHTML(true);                                  //Set email format to HTML
-		    $mail->Subject = 'Enviado por ' .$_POST['nombre'];
-		    $mail->Body = 'Nombre: ' . $nombre . '<br>Correo: ' . $email . '<br>Asunto: ' . $asunto . '<br>Mensaje: ' . $mensaje;
+$query = "SELECT * FROM productos";
 
-		    $envio = $mail->send();
-		    echo '<h5> El mensaje ha sido enviado</h5>';
-		} catch (Exception $e) {
-		    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-		}
+$resultado = $conexion->query($query);
 
-	}
+$productos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+mysqli_close($conexion);
+
+return $productos;
+
 }
 
+//Mostar recetas en el menu de la pagina
+
+function mostrar_recetas(){
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$conexion = mysqli_connect('localhost', 'root', '', 'blog_recetas');
+
+$query = "SELECT * FROM recetas";
+
+$resultado = $conexion->query($query);
+
+$recetas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+mysqli_close($conexion);
+
+
+return $recetas;
+
+
+}
+
+
+function enviar_comentario(){
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
+	$conexion = mysqli_connect('localhost', 'root', '', 'blog_recetas');
+
+if(isset($_POST['submit'])){
+      $nombre = $_POST['nombre'];
+      $contenido = $_POST['contenido'];
+      
+
+      $query = "INSERT INTO comentarios (nombre, contenido) 
+      VALUES ('$nombre', '$contenido')";
+
+      $resultado = mysqli_query($conexion, $query); 
+      if($resultado){
+        echo "<script>alert('Comentario realizado con éxito')</script>";
+      }else{
+        echo "<script>alert('Hubo un error al enviar el comentario')</script>";
+      }
+   }
+mysqli_close($conexion);
+
+}
+
+
+
+
+
+
+
+
+
+?>
